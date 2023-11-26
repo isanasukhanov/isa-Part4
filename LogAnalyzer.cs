@@ -1,8 +1,19 @@
 public static class LogAnalyzer
 {
+    const string PROBEL = " ";
+    static string GetTime(string log)
+    {
+        // извлечь время - строка от первого пробела до второго пробела
+        int firstIndex = log.IndexOf(PROBEL) +1;
+        int secondIndex = log.IndexOf(PROBEL, firstIndex );
+        int length = secondIndex - (firstIndex );
+        string time = log.Substring(firstIndex, length);
+
+        return time;
+    }
     static string GetDate(string log) 
     {
-        /* 
+        /* firstindex = 10,secondindex 19,log.length = 57 
          "2023-11-12 08:30:00 INFO Application started successfully",
           Как извлечь дату из log - строка от начало до первого пробела.
             1. Найти индекс первого пробела (indexProbela)
@@ -12,12 +23,12 @@ public static class LogAnalyzer
             5.
         */
 
-        int indexProbela = log.IndexOf(" ");
+        int indexProbela = log.IndexOf(PROBEL);
         string date;
         date = log.Substring(0, indexProbela);
 
         return date;
-    } 
+    }
 
     public static void Start()
     {
@@ -84,6 +95,9 @@ public static class LogAnalyzer
         {
             string date = GetDate(log);
             Console.WriteLine($"Дата: {date}");
+
+            string time = GetTime(log);
+            Console.WriteLine($"время: {time}");
         }
         
 
