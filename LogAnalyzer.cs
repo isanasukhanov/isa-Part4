@@ -1,31 +1,45 @@
 public static class LogAnalyzer
 {
+    const string PROBEL = " ";
     static string GetDate(string log)
     {
-        /*2023-11-12 08:30:00 INFO Application started successfully
-        Как извлечь дату из log - строка от начало до первого пробела.
-        1.Найти индекс первого пробела (indexProbela)
-        2.Создать переменную для хранения даты (date)
-        3.Извлечь подстроку от индекса 0 до indexProbela и сохранить в date
-        4.Вернуть date
-        */
-        int indexProbela = log.IndexOf(" ");
-        string date;
-        date = log.Substring(0, indexProbela);
+        int firstIndex = log.IndexOf(PROBEL);
+        int dateLenght = firstIndex;
+        string date = log.Substring(0, dateLenght);
         return date;
     }
 
     static string GetTime(string log)
     {
-        int indexVtorogoProbela = log.IndexOf(" ");
-        string time;
-        time = log.Substring(11, 12);
+        int firstIndex = log.IndexOf(PROBEL);
+        int secondIndex =log.IndexOf(PROBEL, firstIndex +1);
+        int timeLenght = secondIndex - firstIndex;
+        string time = log.Substring(firstIndex +1,timeLenght);
         return time;
     }
 
+    static string GetLevel(string log)
+    {
+        int firstIndex = log.IndexOf(PROBEL);
+        int secondIndex = log.IndexOf(PROBEL,firstIndex+1);
+        int thirdIndex =log.IndexOf(PROBEL,secondIndex+1);
+        int levelLenght = thirdIndex - secondIndex;
+        string level = log.Substring(secondIndex+1, levelLenght);
+        return level;
+    }
+
+    static string GetMessage(string log)
+    {
+        int firstIndex = log.IndexOf(PROBEL);
+        int secondIndex = log.IndexOf(PROBEL,firstIndex+1);
+        int thirdIndex =log.IndexOf(PROBEL,secondIndex+1);
+        string message = log.Substring(thirdIndex+1);
+        return message;
+    }    
+
     public static void Start()
     {
-        /* Задача: Программа Анализа Заранее Определённых Логов
+        /* Задача: Программа Анализа Заранее Определённых Логов.
 
         Описание:
         Создайте программу на C#, которая обрабатывает фиксированный набор из 10 строк логов. 
@@ -76,10 +90,11 @@ public static class LogAnalyzer
         foreach (string log in logs)
         {
             string date = GetDate(log);
-            Console.WriteLine($"Дата: {date}");
-            Console.WriteLine();
             string time = GetTime(log);
-            Console.WriteLine($"Время: {time}");
+            string level = GetLevel(log);
+            string message = GetMessage(log);
+            Console.WriteLine($"Дата: {date} Время: {time} Уровень: {level.PadRight(8)} Сообщение: {message}");
+           
         }
 
     }
