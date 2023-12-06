@@ -62,7 +62,7 @@ public static class ReviewAnalyzer
                 return true;
             }
         }
-        return;
+        return false;
     }
 
     public static void Start()
