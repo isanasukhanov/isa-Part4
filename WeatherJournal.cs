@@ -28,9 +28,77 @@
 
 public static class WeatherJournal
 {
+    private static int? SelectMode()
+    {
+        Console.Clear();
+        Console.WriteLine("Выберите режим: ");
+        Console.WriteLine("1 - Чтение");
+        Console.WriteLine("2 - Запись");
+
+        try
+        {
+            int? mode = Convert.ToInt32(Console.ReadLine());
+            if (mode != 1 && mode != 2)
+            {
+                return SelectMode();
+            }
+            return mode;
+        }
+        catch (Exception ex)
+        {
+            return SelectMode();
+        }
+    }
+
     public static void Start()
     {
-        
+        int? mode = SelectMode();
+
+        switch (mode)
+        {
+            case 1:
+                break;
+            case 2:
+                Console.WriteLine("Введите информацию о погоде: ");
+
+                Console.Write("Дата: ");
+                string? date = Console.ReadLine();
+
+                Console.Write("Температура: ");
+                string? temperature = Console.ReadLine();
+
+                Console.Write("Влажность: ");
+                string? humidity = Console.ReadLine();
+
+                Console.Write("Описание: ");
+                string? description = Console.ReadLine();
+                
+                string? path = @"C:\Users\IslamOrg\Desktop\Новая папка (2)\Погода\Weather.txt";
+                
+                try
+                {
+                    File.AppendAllText(path, $"{date}{temperature}{humidity}{description}");
+                }
+                catch  (UnauthorizedAccessException)
+                {
+                    Console.WriteLine("Нет доступа к указанному пути");
+                    return;
+                }
+                catch (Exception)
+                {
+                    Console.WriteLine("Возникла непонятная ошибка");
+                    return;
+                }
+
+               
+
+                Console.WriteLine("Строка успешно добавлена в файл: ");
+                Console.ReadKey();
+                Start();
+                break;
+        }
+
+        Console.WriteLine($"mode: {mode}");
 
     }   
 
