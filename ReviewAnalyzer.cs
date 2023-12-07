@@ -21,7 +21,7 @@
 
 Пример работы программы:
 Ввод пользователя: "Этот продукт отличный!"
-Вывод программы: "Положительный отзыв."
+Вывод программы: "Положительный отзыв."в
 Ввод пользователя: "Я не доволен этой покупкой."
 Вывод программы: "Отрицательный отзыв."
 
@@ -44,7 +44,7 @@ public static class ReviewAnalyzer
         string[] positiveExpressions = { "прекрасный", "доволен", "отличный", "дружелюбный","великолепный"};
         foreach (string expression in  positiveExpressions)
         {
-            if (review.ToLower().Contains(expression))
+            if (review.ToLower().StartsWith(expression))
             {
                 return true;
             }
@@ -57,7 +57,7 @@ public static class ReviewAnalyzer
         string[] negativeExpressions = {"ужасное", "разачарован", "неприятным"};
         foreach (string expression in  negativeExpressions)
         {
-            if (review.ToLower().Contains(expression))
+            if (review.ToLower().StartsWith(expression))
             {
                 return true;
             }
