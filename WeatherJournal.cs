@@ -52,12 +52,34 @@ public static class WeatherJournal
 
     public static void Start()
     {
+        const string? path = @"C:\Users\IslamOrg\Desktop\Новая папка (2)\Погода\Weather.txt";
         int? mode = SelectMode();
 
         switch (mode)
         {
             case 1:
+                Console.WriteLine("Введите дату:");
+                string? selectedDate = Console.ReadLine();
+
+                string contents = File.ReadAllText(path);
+                string[] entries = contents.Split("\r\n");
+
+                for (int i = 0; i < entries.Length -1; i++)
+                {
+                    string entry = entries[i];
+
+                    if (entry.Contains(selectedDate))
+                    {
+                        string[] data = entry.Split(" ");
+                        Console.WriteLine($"Дата: {data[0]}, Погода: {data[3]}, Температура: {data[1]}, Влажность: {data[2]}");        
+                    }
+                    else
+                    {
+                        Console.WriteLine("Нет данных.");
+                    }
+                }  
                 break;
+
             case 2:
                 Console.WriteLine("Введите информацию о погоде: ");
 
@@ -73,11 +95,10 @@ public static class WeatherJournal
                 Console.Write("Описание: ");
                 string? description = Console.ReadLine();
                 
-                string? path = @"C:\Users\IslamOrg\Desktop\Новая папка (2)\Погода\Weather.txt";
                 
                 try
                 {
-                    File.AppendAllText(path, $"{date}{temperature}{humidity}{description}");
+                    File.AppendAllText(path, $"{date}{temperature}{humidity}{description}\r\n");
                 }
                 catch  (UnauthorizedAccessException)
                 {
@@ -89,8 +110,6 @@ public static class WeatherJournal
                     Console.WriteLine("Возникла непонятная ошибка");
                     return;
                 }
-
-               
 
                 Console.WriteLine("Строка успешно добавлена в файл: ");
                 Console.ReadKey();
