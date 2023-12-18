@@ -41,10 +41,10 @@ public static class ReviewAnalyzer
 {
     private static bool CheckForPositivity(string review)
     {
-        string[] positiveExpressions = { "прекрасный", "доволен", "отличный", "дружелюбный","великолепный"};
+        string[] positiveExpressions = { "прекрасн", "доволен", "отличн", "дружел","великолеп"};
         foreach (string expression in  positiveExpressions)
         {
-            if (review.ToLower().StartsWith(expression))
+            if (review.ToLower().Contains(expression))
             {
                 return true;
             }
@@ -54,10 +54,10 @@ public static class ReviewAnalyzer
 
     private static bool CheckForNegativity(string review)
     {
-        string[] negativeExpressions = {"ужасное", "разачарован", "неприятным"};
+        string[] negativeExpressions = {"ужасн", "разачаров", "неприятн"};
         foreach (string expression in  negativeExpressions)
         {
-            if (review.ToLower().StartsWith(expression))
+            if (review.ToLower().Contains(expression))
             {
                 return true;
             }
@@ -68,28 +68,28 @@ public static class ReviewAnalyzer
     public static void Start()
     {
        Console.WriteLine("Оставьте отзыв: ");
-       string review;
-       do
-       { 
-            review = Console.ReadLine();
+       string review = Console.ReadLine();
+       if (string.IsNullOrWhiteSpace(review))
+       {
+            Start();
+            return;
+       }
 
-            bool isPositive = CheckForPositivity(review);
-            bool isNegative = CheckForNegativity(review);
+        bool isPositive = CheckForPositivity(review);
+        bool isNegative = CheckForNegativity(review);
 
-            if (isPositive == true)
-            {
-                 Console.WriteLine("Положительный отзыв.");
-            }
-            else if (isNegative == true)
-            {
-                 Console.WriteLine("Отрицательный отзыв.");
-            }
-            else
-            {
-             Console.WriteLine("Нейтральный отзыв.");
-            }
-       
-        } while(!string.IsNullOrEmpty(review)); 
+        if (isPositive == true)
+        {
+            Console.WriteLine("Положительный отзыв.");
+        }
+        else if (isNegative == true)
+        {
+            Console.WriteLine("Отрицательный отзыв.");
+        }
+        else 
+        {   
+            Console.WriteLine("Нейтральный отзыв.");
+        }
 
     }
 }
