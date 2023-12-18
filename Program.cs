@@ -1,1 +1,1 @@
-﻿WeatherJournal.Start();
+WeatherJournal.Start();
