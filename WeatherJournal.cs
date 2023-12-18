@@ -52,7 +52,7 @@ public static class WeatherJournal
 
     public static void Start()
     {
-        const string? path = @"C:\Users\IslamOrg\Desktop\Новая папка (2)\Погода\Weather.txt";
+        const string? path = @"C:\Weather.txt";
         int? mode = SelectMode();
 
         switch (mode)
