@@ -1,1 +1,1 @@
-WeatherJournal.Start();
+ReviewAnalyzer.Start(); 
