@@ -1,1 +1,1 @@
-﻿ReviewAnalyzer.Start(); 
+ReviewAnalyzer.Start(); 
