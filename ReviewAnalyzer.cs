@@ -77,6 +77,7 @@ public static class ReviewAnalyzer
 
         bool isPositive = CheckForPositivity(review);
         bool isNegative = CheckForNegativity(review);
+        
 
         if (isPositive == true)
         {
