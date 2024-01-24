@@ -45,17 +45,38 @@ C = (F - 32) * 5/9
    2. Вывести полученный результат  
    
 */
-public static class TemperatureConverter
+using static System.Formats.Asn1.AsnWriter;
+
+public static class TemperaturesConverter
 {
     public static void Start()
     {
-        Console.Write("Введите температуру: ");
-        Console.ReadLine();
+        //1.Сказать пользователю ввести данные о температуре.
+        Console.Write("Введите данные о тепературе: ");
 
-        
+        //2.Получить данные от пользователя.
+        int temperature = Convert.ToInt32(Console.ReadLine());
 
-        Console.WriteLine("Выберите шкалу: ");
-        Console.ReadLine();
+        //3.Сохранить полученные данные. (temperature)
+        Console.WriteLine(temperature);
+
+        //4.Получить шкалу введенной температуры от пользователя(Цельсия С или Фаренгейта F)
+        Console.Write("Bведите шкалу F или С: ");
+        string scale = Console.ReadLine();
+
+        string name = "FF";
+        string name1 = "CC";
+       
+        if (scale == name)
+        {
+            temperature = (temperature * 9 / 5) + 32;
+        }
+        else if (scale == name1)
+        {
+            temperature = (temperature - 32) + 5 / 9;
+        }
+        Console.WriteLine(temperature);
+
     }
 }
 
