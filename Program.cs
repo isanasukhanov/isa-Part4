@@ -1,1 +1,1 @@
-﻿TemperaturesConverter.Start();
+﻿AnimalSounds.Start();

@@ -21,9 +21,9 @@ public static class AnimalSounds
 {
     public static void Start()
     {
-        string animal1 = "Кошка";
-        string animal2 = "Собака";
-        string animal3 = "Корова";
+        string animal1 = "кошка";
+        string animal2 = "собака";
+        string animal3 = "корова";
 
         string animal4 = "Мяу";
         string animal5 = "Гав";
@@ -35,15 +35,16 @@ public static class AnimalSounds
 
         if(otvetpolzovatelya == animal1)
         {
-            Console.WriteLine($"Для{animal1}звук {animal4}");
+            Console.WriteLine($"{animal4}");
         }
         else if(otvetpolzovatelya == animal2)
+
         {
-            Console.WriteLine($"Для{animal2}звук{animal5}");
+            Console.WriteLine($"{animal5}");
         }
         else if(otvetpolzovatelya == animal3)
         {
-            Console.WriteLine($"Для{animal3}звук{animal6}");
+            Console.WriteLine($"{animal6}");
         }
         else
         {

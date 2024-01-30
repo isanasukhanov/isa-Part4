@@ -52,7 +52,7 @@ public static class TemperaturesConverter
     public static void Start()
     {
         //1.Сказать пользователю ввести данные о температуре.
-        Console.Write("Введите данные о тепературе: ");
+        Console.Write("Введите температуру: ");
 
         //2.Получить данные от пользователя.
         int temperature = Convert.ToInt32(Console.ReadLine());
@@ -61,21 +61,24 @@ public static class TemperaturesConverter
         Console.WriteLine(temperature);
 
         //4.Получить шкалу введенной температуры от пользователя(Цельсия С или Фаренгейта F)
-        Console.Write("Bведите шкалу F или С: ");
+        Console.Write("Bыберите шкалу (С для Цельсия, F для Фаренгейта): ");
         string scale = Console.ReadLine();
 
-        string name = "FF";
-        string name1 = "CC";
+        string name = "F";
+        string name1 = "C";
        
         if (scale == name)
         {
-            temperature = (temperature * 9 / 5) + 32;
+            temperature = temperature * 9 / 5 + 32;
+            Console.WriteLine($"Температура в градусах Фаренгейта:{temperature}");
         }
         else if (scale == name1)
         {
-            temperature = (temperature - 32) + 5 / 9;
+            temperature = temperature - 32 + 5 / 9;
+            Console.WriteLine($"Температура в градусах Цельсия: {temperature}");
+
         }
-        Console.WriteLine(temperature);
+
 
     }
 }
