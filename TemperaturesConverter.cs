@@ -62,23 +62,18 @@ public static class TemperaturesConverter
 
         //4.Получить шкалу введенной температуры от пользователя(Цельсия С или Фаренгейта F)
         Console.Write("Bыберите шкалу (С для Цельсия, F для Фаренгейта): ");
-        string scale = Console.ReadLine();
-
-        string name = "F";
-        string name1 = "C";
+        string? scale = Console.ReadLine();                       
        
-        if (scale == name)
+        if (scale == "C")
         {
             temperature = temperature * 9 / 5 + 32;
             Console.WriteLine($"Температура в градусах Фаренгейта:{temperature}");
         }
-        else if (scale == name1)
+        else if (scale == "F")
         {
             temperature = temperature - 32 + 5 / 9;
             Console.WriteLine($"Температура в градусах Цельсия: {temperature}");
-
         }
-
 
     }
 }

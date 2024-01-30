@@ -21,30 +21,24 @@ public static class AnimalSounds
 {
     public static void Start()
     {
-        string animal1 = "кошка";
-        string animal2 = "собака";
-        string animal3 = "корова";
-
-        string animal4 = "Мяу";
-        string animal5 = "Гав";
-        string animal6 = "Муу";
-        string animal7 = "Я не знаю, какой звук издает это животное";
-        string otvetpolzovatelya;
+        string koshara = "кошка";
+        string sobaka = "собака";
+        string korova = "корова";
+        
         Console.WriteLine("Привет пользователь! Какое животное вы хотите услышать?");
-        otvetpolzovatelya = Console.ReadLine();
+        string? otvetpolzovatelya = Console.ReadLine();
 
-        if(otvetpolzovatelya == animal1)
+        if(otvetpolzovatelya == koshara)
         {
-            Console.WriteLine($"{animal4}");
+            Console.WriteLine("Мяу");
         }
-        else if(otvetpolzovatelya == animal2)
-
+        else if(otvetpolzovatelya == sobaka)
         {
-            Console.WriteLine($"{animal5}");
+            Console.WriteLine("Гав");
         }
-        else if(otvetpolzovatelya == animal3)
+        else if(otvetpolzovatelya == korova)
         {
-            Console.WriteLine($"{animal6}");
+            Console.WriteLine("Муу");
         }
         else
         {
